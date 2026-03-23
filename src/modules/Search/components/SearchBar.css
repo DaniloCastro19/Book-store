@@ -1,0 +1,34 @@
+.searchContainer{
+  grid-area: 2 / 1 / 3 / 3;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+
+}
+
+.searchIcon {
+  width: 32px;
+  max-height: 32px;
+}
+
+.searchIcon:hover {
+  cursor: pointer;
+}
+.searchBar {
+  padding: .5rem;
+  margin: 1rem;
+  width: 50%;
+  background: none;
+  color: var(--text);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+@media (max-width: 430px) {
+  .searchBar {
+    width: 100%;
+  }
+}

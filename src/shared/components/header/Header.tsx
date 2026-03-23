@@ -6,8 +6,16 @@ export default function Header() {
       <img className="logo" src="src/assets/page_icon.png" alt="Page Icon" />
 
       <nav className="navbar-user">
-        <img src="src/assets/user_icon_black.png" alt="User Icon" />
-        <img src="src/assets/shopping_cart_dark.png" alt="Cart Icon" />
+        <img
+          src="src/assets/user_icon_black.png"
+          alt="User Icon"
+          className="headerIcon"
+        />
+        <img
+          src="src/assets/shopping_cart_dark.png"
+          alt="Cart Icon"
+          className="headerIcon"
+        />
       </nav>
     </header>
   );
