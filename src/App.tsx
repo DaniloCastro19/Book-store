@@ -1,5 +1,5 @@
 import './App.css'
-import SearchBar from './modules/Search/components/SearchBar'
+import BooksPage from './modules/BooksPage/BooksPage'
 import Header from './shared/components/header/Header'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header/>
-      <SearchBar/>
+      <BooksPage/>
     </>
   )
 }

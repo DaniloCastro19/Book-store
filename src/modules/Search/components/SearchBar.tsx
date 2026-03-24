@@ -1,8 +1,11 @@
 import "./SearchBar.css";
-import useSearch from "../hooks/UseSearch";
 
-export default function SearchBar() {
-  const {query, setQuery} = useSearch();
+type SearchBarProps = {
+  query: string;
+  setQuery: (value: string) => void;
+}
+
+export default function SearchBar({ query, setQuery}: SearchBarProps) {
 
   return (
     <div className="searchContainer">
