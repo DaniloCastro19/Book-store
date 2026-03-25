@@ -1,6 +1,6 @@
-import SearchBar from "../Search/components/SearchBar";
+import SearchBar from "../../Search/components/SearchBar";
 import BookStock from "./BooksStock";
-import useSearch from "../Search/hooks/UseSearch";
+import useSearch from "../../Search/hooks/UseSearch";
 
 export default function BooksPage() {
   const {query, setQuery, volumes, loading} = useSearch();

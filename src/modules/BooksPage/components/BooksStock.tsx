@@ -1,4 +1,4 @@
-import type { BookVolume } from "../../core/models/Book";
+import type { BookVolume } from "../../../core/models/Book";
 import BookCard from "./BookCard";
 
 type BookStockProps = {

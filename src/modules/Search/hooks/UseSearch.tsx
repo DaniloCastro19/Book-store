@@ -8,7 +8,7 @@ export default function useSearch() {
   const [volumes, setvolumes] = useState<BookVolume[]>([]);
   const [loading, setLoading] = useState(false);
   const debouncedQuery = useDebounce(query, 500);
-  
+
   useEffect(() => {
     const getVolumes = async () => {
       const searchTerm = debouncedQuery.trim() || "intitle:story";
@@ -16,7 +16,7 @@ export default function useSearch() {
         setLoading(true);
 
         const response = await fetch(
-          `${env.APIVolumesURl}?q=${encodeURIComponent(searchTerm)}&key=${env.booksAPIKey}`
+          `${env.APIVolumesURl}?q=${encodeURIComponent(searchTerm)}&key=${env.booksAPIKey}`,
         );
 
         if (!response.ok) {
@@ -26,7 +26,6 @@ export default function useSearch() {
         const results = await response.json();
         console.log(results);
         setvolumes(results.items);
-
       } catch (error) {
         console.error(error);
         setvolumes([]);
@@ -41,6 +40,6 @@ export default function useSearch() {
     query,
     setQuery,
     volumes,
-    loading
-  }
+    loading,
+  };
 }

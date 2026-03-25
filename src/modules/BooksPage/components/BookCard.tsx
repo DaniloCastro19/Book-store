@@ -1,4 +1,4 @@
-import type { Book } from "../../core/models/Book";
+import type { Book } from "../../../core/models/Book";
 
 export default function BookCard({ title, authors, imageLinks }: Book) {
   return (
