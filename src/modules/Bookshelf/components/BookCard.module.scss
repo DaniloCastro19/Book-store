@@ -1,0 +1,42 @@
+@use "../../../styles/_variables.scss" as *;
+
+.bookcard_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: $font;
+  background-color: $bg;
+  border: 2px solid $border;
+  box-shadow: 1px 1px 5px $accent;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.article-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookcard_image {
+  width: 100%;
+  max-height: 390px;
+}
+
+.bookcard_title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.bookcard_authors {
+  font-size: 1rem;
+  color: $text;
+}
+
+.bookcard_state {
+  font-size: .9rem;
+  color: $accent;
+}
+

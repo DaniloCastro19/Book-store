@@ -1,6 +1,7 @@
 export interface Book {
   title: string;
   authors: string[];
+  state: State;
   imageLinks: ImageLinks;
 }
 
@@ -13,3 +14,5 @@ interface ImageLinks {
   smallThumbnail: string;
   thumbnail: string;
 }
+
+type State = "Borrowed" | "Available" | "Not Available";

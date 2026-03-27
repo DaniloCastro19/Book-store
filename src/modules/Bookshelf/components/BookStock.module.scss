@@ -1,0 +1,13 @@
+@use "../../../styles/_variables.scss" as *;
+
+.bookstock_container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 430px) {
+  .bookstock_container {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+}
