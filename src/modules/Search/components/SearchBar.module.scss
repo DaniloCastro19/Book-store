@@ -1,5 +1,6 @@
-.searchContainer{
-  grid-area: 2 / 1 / 3 / 3;
+@use '../../../styles/_variables.scss' as *;
+
+.search_container{
   width: 100%;
   display: flex;
   align-items: center;
@@ -8,15 +9,15 @@
 
 }
 
-.searchIcon {
+.search_icon {
   width: 32px;
   max-height: 32px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.searchIcon:hover {
-  cursor: pointer;
-}
-.searchBar {
+.searchbar {
   padding: .5rem;
   margin: 1rem;
   width: 50%;
@@ -24,11 +25,11 @@
   color: var(--text);
   outline: none;
   border: none;
-  border-bottom: 1px solid var(--accent);
+  border-bottom: 1px solid $accent;
 }
 
 @media (max-width: 430px) {
-  .searchBar {
+  .searchbar {
     width: 100%;
   }
 }

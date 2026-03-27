@@ -1,9 +1,11 @@
-header {
-  background-color: var(--bg);
-  border: 2px solid var(--border);
-  box-shadow: 1px 1px 5px var(--accent);
-  border-radius: 1px 1px 10px 10px;
+@use '../../styles/_variables.scss' as *;
+
+.header_container {
   grid-area: 1 / 1 / 2 / 3;
+  background-color: $bg;
+  border: 2px solid $border;
+  box-shadow: 1px 1px 5px $accent;
+  border-radius: 1px 1px 10px 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,17 +19,16 @@ header {
   margin-left: 1rem;
 }
 
-.headerIcon{
+.header_icon{
   width: 2rem;
   max-height: 2rem;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 }
 
-.headerIcon:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.navbar-user {
+.navbar_user {
   display: flex;
   flex-direction: row;
   gap: 3rem;

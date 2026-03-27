@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+$bg: #ebf2fa;
+$text: #060a13;
+$card: #427aa1;
+$border: #471323;
+$muted: #6b7280;
+$accent: #2563eb;
+$font: "Oswald", sans-serif;
+
+html[data-theme="dark"] {
+  $bg: #060a13;
+  $text: #ebf2fa;
+  $card: #60a5fa;
+  $border: #902d41;
+  $muted: #94a3b8;
+  $accent: #004fff;
+}

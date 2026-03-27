@@ -1,4 +1,4 @@
-import "./SearchBar.css";
+import styles from "./SearchBar.module.scss";
 
 type SearchBarProps = {
   query: string;
@@ -8,18 +8,18 @@ type SearchBarProps = {
 export default function SearchBar({ query, setQuery}: SearchBarProps) {
 
   return (
-    <div className="searchContainer">
+    <div className={styles.search_container}>
       <input
         type="text"
         placeholder="Search for titles..."
-        className="searchBar"
+        className={styles.searchbar}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
       <img
         src="src/assets/search_icon_black.png"
         alt="SearchBarIcon"
-        className="searchIcon"
+        className={styles.search_icon}
       />
     </div>
   );

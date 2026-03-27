@@ -1,0 +1,27 @@
+@use "./styles/variables.scss" as *;
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: $bg;
+  color: $text;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 5rem 1fr;
+  grid-template-columns: repeat(2, 1fr);
+}
