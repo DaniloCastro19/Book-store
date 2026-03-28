@@ -3,40 +3,62 @@
 .bookcard_container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-family: $font;
-  background-color: $bg;
+  height: 100%;
+  overflow: hidden;
   border: 2px solid $border;
-  box-shadow: 1px 1px 5px $accent;
-  border-radius: 10px;
-  padding: 1rem;
-  margin: 1rem;
+  border-radius: 16px;
+  background-color: $bg;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  font-family: $font;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  }
 }
 
-.article-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.bookcard_image {
+.cover {
   width: 100%;
-  max-height: 390px;
+  height: 250px;
 }
 
-.bookcard_title {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.bookcard_authors {
-  font-size: 1rem;
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
   color: $text;
 }
 
-.bookcard_state {
-  font-size: .9rem;
-  color: $accent;
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
+.authors,
+.state {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.92;
+}
+
+.wishlistButton {
+  margin-top: auto;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  background-color: $accent;
+  color: $bg;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+  &:hover {
+    background-color: darken($accent, 8%);
+    transform: translateY(-1px);
+  }
+}

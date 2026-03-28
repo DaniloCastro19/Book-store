@@ -5,18 +5,31 @@ import type { BookVolume } from "../../../core/models/Book";
 
 export default function useSearch() {
   const [query, setQuery] = useState("");
-  const [volumes, setvolumes] = useState<BookVolume[]>([]);
+  const [volumes, setVolumes] = useState<BookVolume[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const [printType, setPrintType] = useState("all");
+  const [orderBy, setOrderBy] = useState("relevance");
+  const [page, setPage] = useState(0);
+  const maxResults = 10;
+
   const debouncedQuery = useDebounce(query, 500);
+  const params = new URLSearchParams({
+    q: debouncedQuery.trim() || "intitle:story",
+    printType,
+    orderBy,
+    startIndex: String(page * maxResults),
+    maxResults: String(maxResults),
+    key: env.booksAPIKey,
+  });
 
   useEffect(() => {
     const getVolumes = async () => {
-      const searchTerm = debouncedQuery.trim() || "intitle:story";
       try {
         setLoading(true);
 
         const response = await fetch(
-          `${env.APIVolumesURl}?q=${encodeURIComponent(searchTerm)}&key=${env.booksAPIKey}`,
+          `${env.APIVolumesURl}?${params.toString()}`,
         );
 
         if (!response.ok) {
@@ -25,21 +38,26 @@ export default function useSearch() {
 
         const results = await response.json();
         console.log(results);
-        setvolumes(results.items);
+        setVolumes(results.items);
       } catch (error) {
         console.error(error);
-        setvolumes([]);
       } finally {
         setLoading(false);
       }
     };
     getVolumes();
-  }, [debouncedQuery]);
+  }, [debouncedQuery, printType, orderBy, page, maxResults]);
 
   return {
     query,
     setQuery,
     volumes,
     loading,
+    printType,
+    setPrintType,
+    orderBy,
+    setOrderBy,
+    page,
+    setPage,
   };
 }

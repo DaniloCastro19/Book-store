@@ -1,0 +1,8 @@
+@use "../../../styles/_variables.scss" as *;
+
+.mb-3 {
+  border: none;
+  border-radius: 1px;
+  background-color: $accent;
+  color: $bg;
+}

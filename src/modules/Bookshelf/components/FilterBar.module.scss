@@ -1,0 +1,6 @@
+@use "../../../styles/_variables.scss" as *;
+
+.mb-3{
+  background-color: $accent;
+  color: $bg;
+}
