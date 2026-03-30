@@ -64,7 +64,7 @@
     background-color 0.2s ease,
     transform 0.2s ease;
   &:hover {
-    background-color: darken($accent, 8%);
+    background-color: $accent;
     transform: translateY(-1px);
   }
 }
