@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<BookshelfPage />}/>
         <Route path="/user" element={<UserSectionPage />}/>
         <Route path="/wishlist" element={<WishlistPage />}/>
-        <Route path="/book-details" element={<BookDetailsPage />}/>
+        <Route path="/book-details/:id" element={<BookDetailsPage />}/>
       </Routes>
     </Suspense>
   );

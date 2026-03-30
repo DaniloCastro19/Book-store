@@ -1,16 +1,16 @@
-import type { Book } from "../../../core/models/Book";
+import type { Volume } from "../../../core/models/Book";
 import styles from "./BookCard.module.scss";
 import { Link } from "react-router-dom";
 
 
-export default function BookCard({ title, authors, state, imageLinks }: Book) {
+export default function BookCard({ id, title, authors, state, imageLinks }: Volume) {
   const cover = imageLinks?.thumbnail ?? "https://placehold.co/300x420";
   const authorsLabel = Array.isArray(authors)
     ? authors.join(", ")
     : authors || "Unknown author";
 
   return (
-    <Link to="/book-details" className={styles.link}>
+    <Link to={`/book-details/${id}`} className={styles.link}>
       <article className={styles.bookcard_container}>
         <img src={cover} alt={title} className={styles.cover} loading="lazy" />
 

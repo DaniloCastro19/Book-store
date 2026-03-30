@@ -15,6 +15,7 @@ export default function BookStock({volumes}: BookStockProps) {
       {volumes.map((volume) => (
         <BookCard
           key={volume.id}
+          id={volume.id}
           title={volume.volumeInfo.title}
           authors={volume.volumeInfo.authors}
           state="Available"
