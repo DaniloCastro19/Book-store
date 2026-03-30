@@ -7,8 +7,8 @@ type BookStockProps = {
 };
 
 export default function BookStock({volumes}: BookStockProps) {
-  if (!volumes.length) {
-    return <h1>Make a search to show books availables</h1>;
+  if (!volumes || !volumes.length) {
+    return <h1>No volumes found. Make a search to show books volumes availables</h1>;
   }
   return (
     <section className={styles.bookstock_container}>
