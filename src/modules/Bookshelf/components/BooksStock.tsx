@@ -1,3 +1,4 @@
+import React from "react";
 import type { BookVolume } from "../../../core/models/Book";
 import BookCard from "./BookCard";
 import styles from "./BookStock.module.scss";
@@ -6,7 +7,7 @@ type BookStockProps = {
   volumes: BookVolume[];
 };
 
-export default function BookStock({volumes}: BookStockProps) {
+function BookStock({volumes}: BookStockProps) {
   if (!volumes || !volumes.length) {
     return <h1>No volumes found. Make a search to show books volumes availables</h1>;
   }
@@ -25,3 +26,4 @@ export default function BookStock({volumes}: BookStockProps) {
     </section>
   );
 }
+export default React.memo(BookStock);
