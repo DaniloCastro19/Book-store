@@ -1,9 +1,9 @@
-import type { Volume } from "../../../core/models/Book";
+import type { VolumeInfo } from "../../../core/models/Book";
 import styles from "./BookCard.module.scss";
 import { Link } from "react-router-dom";
 
 
-export default function BookCard({ id, title, authors, state, imageLinks }: Volume) {
+export default function BookCard({ id, title, authors, state, imageLinks }: VolumeInfo) {
   const cover = imageLinks?.thumbnail ?? "https://placehold.co/300x420";
   const authorsLabel = Array.isArray(authors)
     ? authors.join(", ")
