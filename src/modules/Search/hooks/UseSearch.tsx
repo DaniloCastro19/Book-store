@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { env } from "../../../env/environment.development";
 import useDebounce from "../../../core/hooks/UseDebounce";
 import type { BookVolume } from "../../../core/models/Book";
@@ -14,14 +14,16 @@ export default function useSearch() {
   const maxResults = 10;
 
   const debouncedQuery = useDebounce(query, 500);
-  const params = new URLSearchParams({
-    q: debouncedQuery.trim() || "intitle:story",
-    printType,
-    orderBy,
-    startIndex: String(page * maxResults),
-    maxResults: String(maxResults),
-    key: env.booksAPIKey,
-  });
+  const params = useMemo(() => {
+    return new URLSearchParams({
+      q: debouncedQuery.trim() || "intitle:story",
+      printType,
+      orderBy,
+      startIndex: String(page * maxResults),
+      maxResults: String(maxResults),
+      key: env.booksAPIKey,
+    });
+  }, [debouncedQuery, printType, orderBy, page]);
 
   useEffect(() => {
     const getVolumes = async () => {
@@ -29,7 +31,7 @@ export default function useSearch() {
         setLoading(true);
 
         const response = await fetch(
-          `${env.APIVolumesURl}?${params.toString()}`,
+          `${env.APIVolumesURl}?${params}`,
         );
 
         if (!response.ok) {
@@ -46,7 +48,7 @@ export default function useSearch() {
       }
     };
     getVolumes();
-  }, [debouncedQuery, printType, orderBy, page, maxResults]);
+  }, [params]);
 
   return {
     query,
