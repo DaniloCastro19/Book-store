@@ -9,34 +9,28 @@ import styles from "./Bookshelf.module.scss";
 
 export default function Bookshelf() {
   const {
-    query,
-    setQuery,
-    volumes,
-    loading,
-    printType,
-    setPrintType,
-    orderBy,
-    setOrderBy,
-    page,
-    setPage,
+    search,
+    filters,
+    data,
+    pagination,
   } = useSearch();
 
   return (
     <Container className={styles["mt-4"]}>
-      <SearchBar query={query} setQuery={setQuery} />
+      <SearchBar {...search} />
       <section className={styles.filter_container}>
-        <FilterBar printType={printType} setPrintType={setPrintType} />
-        <SortBar orderBy={orderBy} setOrderBy={setOrderBy} />
+        <FilterBar {...filters} />
+        <SortBar {...filters} />
       </section>
 
-      {loading && <h5>Loading Books...</h5>}
-      {!loading && (
+      {data.loading && <h5>Loading Books...</h5>}
+      {!data.loading && (
         <BookStock
-          volumes={volumes}
+          volumes={data.volumes}
         />
       )}
 
-      <PaginationBar page={page} setPage={setPage} />
+      <PaginationBar {...pagination}/>
     </Container>
   );
 }
