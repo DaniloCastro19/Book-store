@@ -39,7 +39,7 @@ export default function BooksDetails() {
         <p className={styles.book_genre}>
           Category: {book.mainCategory || "Fiction"}
         </p>
-        <h2 className={styles.book_availability}>Disponibility: Available</h2>
+        <h2 className={styles.book_availability}>Available</h2>
         <button className={styles.add_wishlist_btn}>Add to Wishlist</button>
         <section className={styles.book_description}>
           <h1>Description</h1>
