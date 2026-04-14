@@ -1,3 +1,9 @@
+export interface UserAuthContext {
+  email: string;
+  name: string;
+  access_token: string;
+}
+
 export interface LoginForm {
   email: string;
   password: string;
