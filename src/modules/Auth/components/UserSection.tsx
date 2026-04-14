@@ -1,17 +1,31 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./UserSection.module.scss";
+import { useAuth } from "../context/UseAuthContext";
 
 export default function UserSection() {
   const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useAuth();
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
+
+  const handleLogout = () => {
+    logout();
     navigate("/login");
-  }, [navigate]);
+  };
 
   return (
     <div className={styles.container}>
-      <span className={styles.redirecting}>Redirecting to login...</span>
+      <div className={styles.userInfo}>
+        <span className={styles.welcome}>Hello, {user?.name}!</span>
+        <button onClick={handleLogout} className={styles.logoutButton}>
+          Logout
+        </button>
+      </div>
     </div>
   );
 }

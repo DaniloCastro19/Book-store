@@ -3,7 +3,8 @@ import { env } from "../../../env/environment.development";
 import type {
   LoginPayload,
   RegisterPayload,
-  AuthResponse,
+  RegisterResponse,
+  LoginResponse,
 } from "../../../core/models/Auth";
 
 class AuthService {
@@ -13,12 +14,13 @@ class AuthService {
     this.apiService = new APIService(env.APIbaseUrl);
   }
 
-  async register(payload: RegisterPayload): Promise<AuthResponse> {
-    return this.apiService.post<AuthResponse>("/auth/register", payload);
+  async register(payload: RegisterPayload): Promise<RegisterResponse> {
+    console.log("payload: ", payload);
+    return this.apiService.post<RegisterResponse>("/auth/signUp", payload);
   }
 
-  async login(payload: LoginPayload): Promise<AuthResponse> {
-    return this.apiService.post<AuthResponse>("/auth/login", payload);
+  async login(payload: LoginPayload): Promise<LoginResponse> {
+    return this.apiService.post<LoginResponse>("/auth/signIn", payload);
   }
 }
 

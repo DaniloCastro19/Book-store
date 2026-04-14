@@ -16,8 +16,21 @@ export interface RegisterForm {
   confirmPassword: string;
 }
 
-export interface AuthResponse {
-  access_token: string;
+export interface RegisterResponse {
+  message: string;
+  user?: {
+    email: string;
+    name: string;
+  };
+}
+
+export interface LoginResponse {
+  message: string;
+  user?: {
+    email: string;
+    name: string;
+  };
+  access_token?: string;
 }
 
 export interface RegisterPayload {
