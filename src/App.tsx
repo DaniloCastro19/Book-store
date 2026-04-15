@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./shared/header/Header";
 import { lazy, Suspense } from "react";
 import { AuthProvider } from "./modules/Auth/context/AuthContext";
+import { ProtectedRoute } from "./modules/Auth/components/ProtectedRoute";
 
 const BookshelfPage = lazy(
   () => import("./modules/Bookshelf/components/Bookshelf"),
@@ -26,8 +27,22 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<BookshelfPage />} />
-          <Route path="/user" element={<UserSectionPage />} />
-          <Route path="/wishlist" element={<WishlistPage />} />
+          <Route
+            path="/user"
+            element={
+              <ProtectedRoute>
+                <UserSectionPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/wishlist"
+            element={
+              <ProtectedRoute>
+                <WishlistPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/book-details/:id" element={<BookDetailsPage />} />

@@ -1,23 +1,26 @@
 import styles from "./BookDetails.module.scss";
 import useBookDetails from "../hooks/UseBookDetails";
 import { cleanBookDescription } from "../utils/CleanBookDescription";
+import { useAuth } from "../../Auth/context/UseAuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function BooksDetails() {
-  const { book, loading } = useBookDetails();
+  const { book } = useBookDetails();
   const { title, authors } = book?.volumeInfo || {};
-  console.log("Book details:", book);
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
-  if (loading) {
-    return <div className={styles.loading}>Loading...</div>;
-  }
-
-  if (!book) {
-    return <div className={styles.not_found}>Book not found.</div>;
-  }
+  const handleAddToWishlist = () => {
+    if (!isAuthenticated) {
+      navigate("/login");
+      return;
+    }
+    console.log("Add to wishlist:", book?.id);
+  };
 
   return (
     <div className={styles.book_details_container}>
-      {book.accessInfo?.embeddable ? (
+      {book?.accessInfo?.embeddable ? (
         <iframe
           src={`https://books.google.com/books?id=${book.id}&printsec=frontcover&output=embed`}
           loading="lazy"
@@ -25,7 +28,7 @@ export default function BooksDetails() {
         ></iframe>
       ) : (
         <img
-          src={book.volumeInfo.imageLinks?.thumbnail}
+          src={book?.volumeInfo.imageLinks?.thumbnail}
           alt={title}
           className={styles.book_image}
         />
@@ -37,14 +40,19 @@ export default function BooksDetails() {
           Author: {Array.isArray(authors) ? authors.join(", ") : authors}
         </p>
         <p className={styles.book_genre}>
-          Category: {book.mainCategory || "Fiction"}
+          Category: {book?.mainCategory || "Fiction"}
         </p>
         <h2 className={styles.book_availability}>Available</h2>
-        <button className={styles.add_wishlist_btn}>Add to Wishlist</button>
+        <button
+          onClick={handleAddToWishlist}
+          className={styles.add_wishlist_btn}
+        >
+          Add to Wishlist
+        </button>
         <section className={styles.book_description}>
           <h1>Description</h1>
           <p>
-            {cleanBookDescription(book.volumeInfo.description) ||
+            {cleanBookDescription(book?.volumeInfo.description) ||
               "No description available for this book."}
           </p>
         </section>
