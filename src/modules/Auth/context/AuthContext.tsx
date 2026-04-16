@@ -12,10 +12,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       name: name,
       access_token,
     });
+    localStorage.setItem("access_token", access_token);
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("access_token");
   };
 
   return (
