@@ -4,19 +4,21 @@ import styles from "./BorrowButton.module.scss";
 
 interface BorrowButtonProps {
   bookId: string;
+  isAvailable: boolean;
 }
 
 export default function BorrowButton({
   bookId,
+  isAvailable,
 }: BorrowButtonProps) {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
+  if (!isAuthenticated || !isAvailable) {
+    return null;
+  }
+
   const handleBorrow = () => {
-    if (!isAuthenticated) {
-      navigate("/login");
-      return;
-    }
     navigate(`/book-details/${bookId}/create-loan`);
   };
 

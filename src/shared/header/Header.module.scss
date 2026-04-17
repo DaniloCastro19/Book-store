@@ -22,6 +22,7 @@
 .header_icon{
   width: 2rem;
   max-height: 2rem;
+  color: $text;
   &:hover {
     cursor: pointer;
     transform: scale(1.1);

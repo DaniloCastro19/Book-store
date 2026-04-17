@@ -2,7 +2,6 @@ import { APIService } from "../../../core/services/APIService";
 import { env } from "../../../env/environment.development";
 import type {
   CreateLoanRequest,
-  GetLoansResponse,
   LoanResponse,
 } from "../../../core/models/Loan";
 
@@ -28,16 +27,24 @@ class LoanService {
     });
   }
 
-  async getLoans(): Promise<GetLoansResponse> {
-    return this.apiService.get<GetLoansResponse>("/loans", {
+  async getLoans(): Promise<LoanResponse[]> {
+    return this.apiService.get<LoanResponse[]>("/loans", {
       ...this.getHeaders(),
     });
   }
 
-  async returnLoan(loanId: string): Promise<LoanResponse> {
-    return this.apiService.post<LoanResponse>(
+  async getLoansByUser(userId: string): Promise<LoanResponse[]> {
+    return this.apiService.get<LoanResponse[]>(`/loans/${userId}`, {
+      ...this.getHeaders(),
+    });
+  }
+
+  async returnLoan(loanId: string, userId: string): Promise<LoanResponse> {
+    return this.apiService.put<LoanResponse>(
       `/loans/${loanId}/return`,
-      {},
+      {
+        userId: userId,
+      },
       {
         ...this.getHeaders(),
       },

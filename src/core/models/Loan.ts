@@ -29,9 +29,16 @@ export interface LoanResponse {
   id: string;
   bookId: string;
   userId: string;
-  borrowDate: string;
+  loanDate: string;
+  dueDate: string;
   returnDate: string | null;
   status: LoanStatus;
+  book: {
+    id: string;
+    title: string;
+    authors: string[];
+    coverImage?: string;
+  };
 }
 
 export interface GetLoansResponse {

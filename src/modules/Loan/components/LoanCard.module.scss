@@ -1,0 +1,69 @@
+@import "../../../styles/variables";
+
+.loan_card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  border: 1px solid rgba($border, 0.2);
+  border-radius: 6px;
+  background-color: white;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateX(5px);
+    border-color: $accent;
+  }
+
+  .book_img {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .loan_info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+      color: $text;
+    }
+
+    p {
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+      color: $muted;
+
+      strong {
+        color: $text;
+      }
+    }
+  }
+
+  .status_badge {
+    align-self: flex-start;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &.ACTIVE {
+      background-color: #dcfce7;
+      color: #166534;
+    }
+    &.OVERDUE {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+    &.RETURNED {
+      background-color: #f3f4f6;
+      color: #374151;
+    }
+  }
+}

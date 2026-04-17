@@ -44,6 +44,8 @@ export interface BookResponse {
   createdAt: string;
   updatedAt: string;
   loans?: {
+    id: string;
+    userId: string;
     status: LoanStatus;
   }[];
 }
@@ -54,4 +56,3 @@ export interface GetBooksResponse {
   page: number;
   limit: number;
 }
-

@@ -4,11 +4,12 @@ import { cleanBookDescription } from "../utils/CleanBookDescription";
 import { useAuth } from "../../Auth/context/UseAuthContext";
 import { useNavigate, Outlet } from "react-router-dom";
 import BorrowButton from "../../Loan/components/BorrowButton";
+import ReturnBookButton from "../../Loan/components/ReturnBookButton";
 import { useBookAvailability } from "../../Bookshelf/hooks/UseBookAvailability";
 
 export default function BooksDetails() {
   const { id, book } = useBookDetails();
-  const { state } = useBookAvailability(id ?? "");
+  const { state, userId, loanId } = useBookAvailability(id ?? "");
   const { title, authors } = book?.volumeInfo || {};
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -49,7 +50,12 @@ export default function BooksDetails() {
           Category: {book?.mainCategory || "Fiction"}
         </p>
         <h2 className={styles.book_availability}>{status}</h2>
-        <BorrowButton bookId={book?.id || ""} />
+        <BorrowButton bookId={book?.id || ""} isAvailable={state === "Available"} />
+        <ReturnBookButton
+          bookId={book?.id || ""}
+          loanId={loanId}
+          borrowedUserId={userId}
+        />
         <button
           onClick={handleAddToWishlist}
           className={styles.add_wishlist_btn}
