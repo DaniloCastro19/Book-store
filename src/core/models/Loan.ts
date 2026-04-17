@@ -12,7 +12,7 @@ export interface Loan {
   status: LoanStatus;
 }
 
-export type LoanStatus = "active" | "returned" | "overdue";
+export type LoanStatus = "ACTIVE" | "RETURNED" | "OVERDUE";
 
 export interface CreateLoanRequest {
   bookId: string;

@@ -23,4 +23,4 @@ interface AccesInfo {
   embeddable: boolean;
 }
 
-type State = "Borrowed" | "Available" | "Not Available";
+export type State = "Borrowed" | "Available" | "Not Available";

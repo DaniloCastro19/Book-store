@@ -50,7 +50,6 @@ export default function useSearch() {
         const results = await response.json();
         const newItems: BookVolume[] = results.items || [];
 
-        console.log(results);
         setVolumes(newItems);
         setTotalItems(results.totalItems ?? 0);
         setHasMore(newItems.length === maxResults);
