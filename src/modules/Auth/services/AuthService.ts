@@ -15,7 +15,6 @@ class AuthService {
   }
 
   async register(payload: RegisterPayload): Promise<RegisterResponse> {
-    console.log("payload: ", payload);
     return this.apiService.post<RegisterResponse>("/auth/signUp", payload);
   }
 

@@ -6,9 +6,15 @@ import type { UserAuthContext } from "../../../core/models/Auth";
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserAuthContext | null>(null);
 
-  const login = (email: string, name: string, access_token: string) => {
+  const login = (
+    sub: string,
+    email: string,
+    name: string,
+    access_token: string,
+  ) => {
     setUser({
-      email,
+      sub: sub,
+      email: email,
       name: name,
       access_token,
     });

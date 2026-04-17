@@ -3,7 +3,7 @@ import type { UserAuthContext } from "../../../core/models/Auth";
 
 interface AuthContextType {
   user: UserAuthContext | null;
-  login: (email: string, name: string, access_token: string) => void;
+  login: (sub: string, email: string, name: string, access_token: string) => void;
   logout: () => void;
   isAuthenticated: boolean;
 }

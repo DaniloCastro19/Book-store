@@ -34,8 +34,13 @@ export default function LoginForm() {
         setApiError(response.message || "Login failed");
         return;
       }
-      login(formData.email, response.payload.name, response.access_token);
-      navigate("/");
+      login(
+        response.payload.sub,
+        response.payload.email,
+        response.payload.name,
+        response.access_token,
+      );
+      navigate(-1);
     } catch (error) {
       setApiError(error instanceof Error ? error.message : "Login failed");
     } finally {
