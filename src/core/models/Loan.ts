@@ -15,7 +15,14 @@ export interface Loan {
 export type LoanStatus = "ACTIVE" | "RETURNED" | "OVERDUE";
 
 export interface CreateLoanRequest {
-  bookId: string;
+  googleBooksId: string;
+  userId: string;
+  title: string;
+  authors: string[];
+  description?: string;
+  coverImage?: string;
+  category?: string;
+  dueDate?: string;
 }
 
 export interface LoanResponse {

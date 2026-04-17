@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { State } from "../../../core/models/Book";
-import { env } from "../../../env/environment.development";
+import { bookService } from "../../Book/services/BookService";
 
 export const useBookAvailability = (googleId: string) => {
   const [state, setState] = useState<State>("Available");
@@ -9,15 +9,12 @@ export const useBookAvailability = (googleId: string) => {
   useEffect(() => {
     const checkAvailability = async () => {
       try {
-        const response = await fetch(`${env.APIbaseUrl}/books/google/${googleId}`);
-        const book = await response.json();
+        const book = await bookService.getBookByGoogleId(googleId);
 
-        if (!book || !book.loans) {
+        if (!book || !book.id) {
           setState("Available");
-        } else if (
-          book.loans.status === "ACTIVE" ||
-          book.loans.status === "OVERDUE"
-        ) {
+        } else if (book.loans && book.loans.length > 0) {
+          // If there are loans returned by this endpoint, they are already filtered as ACTIVE/OVERDUE in backend
           setState("Borrowed");
         } else {
           setState("Available");

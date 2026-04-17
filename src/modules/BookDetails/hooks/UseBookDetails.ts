@@ -35,6 +35,7 @@ export default function useBookDetails() {
     fetchBook();
   }, [id]);
   return {
+    id,
     book,
     loading,
   };

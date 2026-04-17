@@ -19,6 +19,8 @@ const LoginForm = lazy(() => import("./modules/Auth/components/LoginForm"));
 const BookDetailsPage = lazy(
   () => import("./modules/BookDetails/components/BooksDetails"),
 );
+const LoanModal = lazy(() => import("./modules/Loan/components/LoanModal"));
+const LoanListPage = lazy(() => import("./modules/Loan/components/LoanList"));
 
 function App() {
   return (
@@ -43,9 +45,26 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/loan-list"
+            element={
+              <ProtectedRoute>
+                <LoanListPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/book-details/:id" element={<BookDetailsPage />} />
+          <Route path="/book-details/:id" element={<BookDetailsPage />}>
+            <Route
+              path="create-loan"
+              element={
+                <ProtectedRoute>
+                  <LoanModal />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
         </Routes>
       </AuthProvider>
     </Suspense>

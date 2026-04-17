@@ -1,0 +1,18 @@
+@use '../../../styles/_variables.scss' as *;
+
+.borrowButton {
+  padding: 0.75rem 1.5rem;
+  background-color: $accent;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-family: $font;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba($accent, 0.4);
+  }
+}

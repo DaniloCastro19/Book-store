@@ -45,7 +45,7 @@ export interface BookResponse {
   updatedAt: string;
   loans?: {
     status: LoanStatus;
-  };
+  }[];
 }
 
 export interface GetBooksResponse {

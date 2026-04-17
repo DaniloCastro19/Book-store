@@ -2,10 +2,13 @@ import styles from "./BookDetails.module.scss";
 import useBookDetails from "../hooks/UseBookDetails";
 import { cleanBookDescription } from "../utils/CleanBookDescription";
 import { useAuth } from "../../Auth/context/UseAuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
+import BorrowButton from "../../Loan/components/BorrowButton";
+import { useBookAvailability } from "../../Bookshelf/hooks/UseBookAvailability";
 
 export default function BooksDetails() {
-  const { book } = useBookDetails();
+  const { id, book } = useBookDetails();
+  const { state } = useBookAvailability(id ?? "");
   const { title, authors } = book?.volumeInfo || {};
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -18,8 +21,11 @@ export default function BooksDetails() {
     console.log("Add to wishlist:", book?.id);
   };
 
+  const status = state === "Available" ? state : "Not Available";
+
   return (
     <div className={styles.book_details_container}>
+      <Outlet />
       {book?.accessInfo?.embeddable ? (
         <iframe
           src={`https://books.google.com/books?id=${book.id}&printsec=frontcover&output=embed`}
@@ -42,7 +48,8 @@ export default function BooksDetails() {
         <p className={styles.book_genre}>
           Category: {book?.mainCategory || "Fiction"}
         </p>
-        <h2 className={styles.book_availability}>Available</h2>
+        <h2 className={styles.book_availability}>{status}</h2>
+        <BorrowButton bookId={book?.id || ""} />
         <button
           onClick={handleAddToWishlist}
           className={styles.add_wishlist_btn}
