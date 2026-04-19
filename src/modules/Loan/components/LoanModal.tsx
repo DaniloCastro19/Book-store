@@ -94,10 +94,13 @@ export default function LoanModal() {
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
             min={new Date().toISOString().split("T")[0]}
-            max={new Date(Date.now() + 14 * 24 * 60 * 60 * 1000) // Max 14 days from now
-              .toISOString()
-              .split("T")[0]}
+            max={
+              new Date(Date.now() + 14 * 24 * 60 * 60 * 1000) // Max 14 days from now
+                .toISOString()
+                .split("T")[0]
+            }
             className={styles.date_input}
+            required
           />
         </div>
 

@@ -24,6 +24,10 @@
   object-fit: cover;
   background: $card;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  object-fit: contain;
+  background: $card;
+  image-rendering: -webkit-optimize-quality;
+  image-rendering: high-quality;
 }
 
 .book_info {
@@ -91,6 +95,16 @@
 .book_description p {
   margin: 0;
   line-height: 1.7;
+}
+
+.available_status {
+  color: $available;
+  font-weight: 700;
+}
+
+.not_available_status {
+  color: $not-available;
+  font-weight: 700;
 }
 
 @media (max-width: 800px) {

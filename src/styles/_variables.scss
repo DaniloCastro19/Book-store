@@ -6,6 +6,8 @@ $card: #427aa1;
 $border: #471323;
 $muted: #6b7280;
 $accent: #2563eb;
+$available: #10b981;
+$not-available: #ef4444;
 $font: "Oswald", sans-serif;
 
 html[data-theme="dark"] {
@@ -15,4 +17,6 @@ html[data-theme="dark"] {
   $border: #902d41;
   $muted: #94a3b8;
   $accent: #004fff;
+  $available: #34d399;
+  $not-available: #f87171;
 }

@@ -23,10 +23,7 @@ export default function ReturnBookButton({
   const [modalMessage, setModalMessage] = useState("");
 
   const canReturn =
-    isAuthenticated &&
-    borrowedUserId &&
-    user?.sub === borrowedUserId &&
-    loanId;
+    isAuthenticated && borrowedUserId && user?.sub === borrowedUserId && loanId;
 
   const handleReturn = async () => {
     if (!loanId) return;

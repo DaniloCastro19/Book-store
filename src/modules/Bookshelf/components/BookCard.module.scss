@@ -52,6 +52,16 @@
   opacity: 0.92;
 }
 
+.available {
+  color: $available;
+  font-weight: 700;
+}
+
+.notAvailable {
+  color: $not-available;
+  font-weight: 700;
+}
+
 .wishlistButton {
   margin-top: auto;
   border: 1px solid $border;

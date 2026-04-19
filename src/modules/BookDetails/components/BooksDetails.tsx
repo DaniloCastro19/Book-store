@@ -19,7 +19,6 @@ export default function BooksDetails() {
       navigate("/login");
       return;
     }
-    console.log("Add to wishlist:", book?.id);
   };
 
   const status = state === "Available" ? state : "Not Available";
@@ -38,6 +37,7 @@ export default function BooksDetails() {
           src={book?.volumeInfo.imageLinks?.thumbnail}
           alt={title}
           className={styles.book_image}
+          loading="lazy"
         />
       )}
 
@@ -49,8 +49,19 @@ export default function BooksDetails() {
         <p className={styles.book_genre}>
           Category: {book?.mainCategory || "Fiction"}
         </p>
-        <h2 className={styles.book_availability}>{status}</h2>
-        <BorrowButton bookId={book?.id || ""} isAvailable={state === "Available"} />
+        <h2
+          className={
+            state === "Available"
+              ? styles.available_status
+              : styles.not_available_status
+          }
+        >
+          {status}
+        </h2>
+        <BorrowButton
+          bookId={book?.id || ""}
+          isAvailable={state === "Available"}
+        />
         <ReturnBookButton
           bookId={book?.id || ""}
           loanId={loanId}

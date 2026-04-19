@@ -19,8 +19,8 @@ function BookCard({ id, title, authors, state, imageLinks }: VolumeInfo) {
       navigate("/login");
       return;
     }
-    console.log("Add to wishlist:", id);
   };
+  const status = state === "Available" ? state : "Not Available";
 
   return (
     <Link to={`/book-details/${id}`} className={styles.link}>
@@ -30,7 +30,16 @@ function BookCard({ id, title, authors, state, imageLinks }: VolumeInfo) {
         <div className={styles.content}>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.authors}>Authors: {authorsLabel}</p>
-          <p className={styles.state}>State: {state}</p>
+          <p className={styles.state}>
+            State:{" "}
+            <span
+              className={
+                state === "Available" ? styles.available : styles.notAvailable
+              }
+            >
+              {status}
+            </span>
+          </p>
 
           <button
             type="button"
