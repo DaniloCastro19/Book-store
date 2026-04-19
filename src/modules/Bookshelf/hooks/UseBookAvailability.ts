@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { State } from "../../../core/models/Book";
-import { bookService } from "../../Book/services/BookService";
+import { bookService } from "../services/BookService";
 
 export const useBookAvailability = (googleId: string) => {
   const [state, setState] = useState<State>("Available");
