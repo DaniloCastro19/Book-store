@@ -3,10 +3,11 @@ import styles from "./SearchBar.module.scss";
 type SearchBarProps = {
   query: string;
   setQuery: (value: string) => void;
-}
+};
 
-export default function SearchBar({ query, setQuery}: SearchBarProps) {
-
+export default function SearchBar({ query, setQuery }: SearchBarProps) {
+  const searchIcon = new URL("/search_icon_black.png", import.meta.url)
+    .href;
   return (
     <div className={styles.search_container}>
       <input
@@ -17,7 +18,7 @@ export default function SearchBar({ query, setQuery}: SearchBarProps) {
         onChange={(e) => setQuery(e.target.value)}
       />
       <img
-        src="src/assets/search_icon_black.png"
+        src={searchIcon}
         alt="SearchBarIcon"
         className={styles.search_icon}
       />

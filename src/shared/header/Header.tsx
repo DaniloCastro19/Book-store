@@ -1,14 +1,17 @@
-import styles from "./Header.module.scss"
+import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../modules/Auth/context/UseAuthContext";
 
 export default function Header() {
   const { isAuthenticated } = useAuth();
+  const pageIcon = new URL("/page_icon.png", import.meta.url).href;
+  const userIcon = new URL("/user_icon_black.png", import.meta.url).href;
+  const cartIcon = new URL("/shopping_cart_dark.png", import.meta.url).href;
 
   return (
     <header className={styles.header_container}>
       <Link to="/">
-        <img className={styles.logo} src="src/assets/page_icon.png" alt="Page Icon" />
+        <img className={styles.logo} src={pageIcon} alt="Page Icon" />
       </Link>
 
       <nav className={styles.navbar_user}>
@@ -21,19 +24,11 @@ export default function Header() {
         )}
 
         <Link to="user">
-          <img
-            src="src/assets/user_icon_black.png"
-            alt="User Icon"
-            className={styles.header_icon}
-          />
+          <img src={userIcon} alt="User Icon" className={styles.header_icon} />
         </Link>
 
         <Link to="/wishlist">
-          <img
-            src="src/assets/shopping_cart_dark.png"
-            alt="Cart Icon"
-            className={styles.header_icon}
-          />
+          <img src={cartIcon} alt="Cart Icon" className={styles.header_icon} />
         </Link>
       </nav>
     </header>
